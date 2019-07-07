@@ -1,0 +1,80 @@
+<% function table(format, title) { %>
+    <% if (format.length !== 0) { %>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h3 class="text-<%= severityClass(title) %>"><%= title %> (<%= format.length %>)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Package</th>
+                        <th scope="col">Current</th>
+                        <th scope="col">Wanted</th>
+                        <th scope="col">Latest</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% format.forEach(dependency => { %>
+                            <tr>
+                                <% dependency.forEach((item, index) => { %>
+                                    <% if (index === 5) { %>
+                                        <td><a target="_blank" rel="noreferrer" rel="noopener" href="<%= item %>"><%= item %></a></td>
+                                    <% } else { %>
+                                        <td><%= item %></td>
+                                    <% } %>
+                                <% }) %>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% } %>
+<% } %>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+
+    <title>Yarn Outdated Report</title>
+    <meta name="description" content="<%= summary.outdated %> outdated packages.">
+
+    <style>
+        html {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md text-center">
+            <h1>Yarn Outdated Report</h1>
+            <h3>
+                <%= summary.outdated %> outdated packages
+            </h3>
+        </div>
+    </div>
+    <% if (summary.outdated === 0) { %>
+        <div class="col-md-12 alert alert-success">
+            Congrats!!! No outdated packages were found.
+        </div>
+    <% } else { %>
+        <% table(major, 'Major'); %>
+        <% table(minor, 'Minor'); %>
+        <% table(patch, 'Patch'); %>
+    <% } %>
+    <div class="row">
+        <h6 class="col-md-12 mb-3 text-right">Report generated at <%= formatDate(reportDate) %>.</h6>
+    </div>
+</div>
+</body>
+
+</html>

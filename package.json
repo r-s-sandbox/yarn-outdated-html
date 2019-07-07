@@ -1,0 +1,30 @@
+{
+  "name": "yarn-outdated-html",
+  "version": "1.0.0",
+  "homepage": "https://github.com/r-s-sandbox/yarn-outdated-html",
+  "repository": "https://github.com/r-s-sandbox/yarn-outdated-html.git",
+  "description": "Generate a HTML report for Yarn Outdated",
+  "keywords": [
+    "yarn",
+    "outdated",
+    "report"
+  ],
+  "bin": {
+    "yarn-outdated-html": "index.js"
+  },
+  "engines": {
+    "node": ">=7.6",
+    "yarn": ">=1.12.3"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "ejs": "^2.6.1",
+    "semver": "^6.2.0"
+  },
+  "files": [
+    "lib",
+    "templates"
+  ],
+  "main": "index.js",
+  "license": "MIT"
+}
