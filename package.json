@@ -19,7 +19,7 @@
   "dependencies": {
     "commander": "^2.20.0",
     "ejs": "^2.6.1",
-    "semver": "^6.2.0"
+    "semver": "^7.1.2"
   },
   "files": [
     "lib",
