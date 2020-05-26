@@ -17,7 +17,7 @@
     "yarn": ">=1.12.3"
   },
   "dependencies": {
-    "commander": "^2.20.0",
+    "commander": "^5.1.0",
     "ejs": "^2.6.1",
     "semver": "^7.3.2"
   },
